@@ -1,11 +1,6 @@
-Player (class)
-int: id
-string: name
-int: money
-int: location
-MovePlayerFunction() =>  Update Location by calling GetPropertyCount() from GameBoard and checking that new location is lower than max. Remove count amount if not and update new location. Get the property & owner from Game Board. Check if you are the owner. If not, remove the sale price from money.  Call an event about player moving. - this could be subscribed to by the front end systems. 
+DATA CLASSES
 
-BoardData(data class): PREMADE
+Board(data class): PREMADE
 Array (PropertyData): Properties
 
 PropertyData (data class): PREMADE
@@ -14,15 +9,26 @@ String Name
 Int price
 type: is or isnt property
 
-PlayerOrderData(data class)
+Players(data class)
 Array(string) names
+
+
+FUNCTIONAL CLASSES
+Player (class)
+int: id
+string: name
+int: money
+int: location
+MovePlayerFunction() =>  Update Location by calling GetPropertyCount() from GameBoard and checking that new location is lower than max. Remove count amount if not and update new location. Get the property & owner from Game Board. Check if you are the owner. If not, remove the sale price from money.  Call an event about player moving. - this could be subscribed to by the front end systems. 
+
+
 
 TurnManager:
 Array(playerIDs). This needs to be an ordered data structure. We need to seed the player order as this is in the instructions
 CurrentTurnOwner (int PlayerID)
 TurnState: Rolling Dice, ResolvingPropertyInteraction. If this was a bigger project, we'd want a state manager. 
-Initialize() => Set TurnState to Rolling Dice. Call Set Player Order
 CreatePlayerOrder() => Try get the predetermined playerorderdata. If fails, creates 4 random players. 
+Initialize() => Set TurnState to Rolling Dice. Call Set Player Order
 
 InputManager:
 Figure this out later, it isn't important until we need to use the other dice roll set. 

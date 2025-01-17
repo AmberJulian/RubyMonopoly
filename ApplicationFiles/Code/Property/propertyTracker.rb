@@ -13,12 +13,11 @@ class PropertyTracker
   #Ruby has a built in initialize method, for setting default values
   def initialize
    # puts "Hello World" # this is how to console.log
-
-   file = File.open "../Data/board.json"
+  puts "Initializing Property Manager..."
+   file = File.open "../../Data/board.json"
    data = JSON.load file
    #puts data
    
-    
    data.each do |property|
     if "#{property["type"]}" == "property"
       propertyOwnershipHash = {:"#{property["name"]}" => -1}

@@ -26,7 +26,7 @@ MovePlayerFunction() =>  Update Location by calling GetPropertyCount() from Game
 TurnManager:
 Array(playerIDs). This needs to be an ordered data structure. We need to seed the player order as this is in the instructions
 CurrentTurnOwner (int PlayerID)
-TurnState: Rolling Dice, ResolvingPropertyInteraction. If this was a bigger project, we'd want a state manager. 
+TurnState: Rolling Dice, ResolvingPropertyInteraction. If this was a bigger project, we'd want a state manager. <- actually I'll probably skip this
 CreatePlayerOrder() => Try get the predetermined playerorderdata. If fails, creates 4 random players. 
 Initialize() => Set TurnState to Rolling Dice. Call Set Player Order
 

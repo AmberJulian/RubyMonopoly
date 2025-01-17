@@ -21,12 +21,9 @@ class PropertyTracker
     
    data.each do |property|
     if "#{property["type"]}" == "property"
-      #puts "#{property["type"]}"
-      oropertyOwnershipHash = {:"#{property["name"]}" => -1}
+      propertyOwnershipHash = {:"#{property["name"]}" => -1}
       puts unownedPropertyHash
     end
-    #if "#{property["type"]}" == "property"
-   # puts "#{property["name"]}"
    end
   
   

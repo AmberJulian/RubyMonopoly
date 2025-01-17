@@ -1,0 +1,16 @@
+Notes from creating application:
+
+Assumptions Made About Project:
+* I assume since it mentions at the bottom that it's a command line app that we need no visuals aside from text.
+* I assume that the price for rent for each property is the same as it's initial price (this is not how the original game works)
+* Ruby works roughly the same way as C#
+
+
+Process: 
+First I created a GIT library, and committed the files given to us. 
+I googled Ruby. I learned it's an object orientated programming language without strict typing and quite different syntax. 
+I wrote pseudocode according to how I would write it in C#. That way, the building blocks are in place for me to google each call, and work around any problems that come about because of any differences.  
+I estimate my pseudocode version will take about an hour. If this was an actual job, I'd put an extra hour into my estimate - I feel the need to timebox people reaching out for help (may be unnecessary for a Grad) 
+Actual time taken: About an hour. 
+
+

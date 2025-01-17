@@ -1,16 +1,24 @@
 Notes from creating application:
 
 Assumptions Made About Project:
-* I assume since it mentions at the bottom that it's a command line app that we need no visuals aside from text.
-* I assume that the price for rent for each property is the same as it's initial price (this is not how the original game works)
-* Ruby works roughly the same way as C#
+* It says it's a command line app - I assume that means we need no visuals.
+* The price for rent for each property is the same as it's initial price (this is not how the original game works)
+* AI Usage - Since this hasn't been specified, I'll write a version with no AI (only google), and try improve it in a second version with AI improving my code after I've finished. Happy to chat about reasoning more - but I'm scared of giving the impression that I'm not with the times, OR give the impression that I over rely on it.  
 
 
 Process: 
-First I created a GIT library, and committed the files given to us. 
-I googled Ruby. I learned it's an object orientated programming language without strict typing and quite different syntax. 
-I wrote pseudocode according to how I would write it in C#. That way, the building blocks are in place for me to google each call, and work around any problems that come about because of any differences.  
-I estimate my pseudocode version will take about an hour. If this was an actual job, I'd put an extra hour into my estimate - I feel the need to timebox people reaching out for help (may be unnecessary for a Grad) 
-Actual time taken: About an hour. 
+First I created a GIT library, and committed the files given. 
+
+I quickly googled Ruby. I learned it's an object orientated programming language without strict typing and quite different syntax.
+
+Normally I'd do estimating before starting any task. 
+
+I want some pseudocode to work with. It's a small task that I could do without much thought in C#, but I don't know Ruby. 
+I estimate an hour to write the pseudo. Ten hours to write the actual code. If appropriate, I would flag a low estimation confidence to production (I have no idea how much trouble Ill have converting my C# thoughts to Ruby code). I could also flag at this point that I may be able to do it faster by using AI to figure out how to write each line of my pseudo in Ruby, or by not attempting unit tests, or not trying too hard to make it extensible into a full project. 
+
+I wrote pseudocode according to how I would code in C#. Took about an hour. 
+
+ 
+
 
 

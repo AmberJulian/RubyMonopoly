@@ -3,21 +3,22 @@ require 'json'
 require_relative 'player'
 
 class PlayerManager
-    attr_reader :players # Expose players via an accessor
-  
+    attr_reader :playerCount
     #initialize all the players with names in our datafile, aka, all the ones given to us
     def initialize 
+        puts "Initializing Player Manager..."
         @players = {} # Instance variable for storing players
         file = File.open "../../Data/players.json"
         playerData = JSON.load file
          
-        for i in 0..(playerData.count-1)
-            newPlayer = Player.new(playerData[i],i)  
-            @players[i] = newPlayer 
-        end
+        @playerCount = playerData.count
 
-        puts "#{@players[2].name}"
+        for i in 0..@playerCount-1
+            @players[i] = Player.new(playerData[i], i)  
+        end
+    end
+
+    def resolveTurn(playerArrayId)
     end
 end
 
-PlayerManager.new

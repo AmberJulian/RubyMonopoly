@@ -1,16 +1,18 @@
 require_relative '../Player/playerManager'
-require_relative 'turnManager'
+require_relative '../Property/propertyOwnershipTracker'
+require_relative 'turnTracker'
 require_relative 'dieRoller'
 
 class GameLoopManager #get around creating any events
 
     def initialize
         puts "Initializing Game Manager..."
-        puts "Creating other managers..."
+        puts "Initializing other managers..."
+        @propertyTracker = PropertyOwnershipTracker.new()
         @playerManager = PlayerManager.new()
         puts "Player count: #{@playerManager.playerCount}"
 
-        @turnManager = TurnManager.new(@playerManager.playerCount)
+        @turnTracker = TurnTracker.new(@playerManager.playerCount)
         @dieRoller = DieRoller.new
         @maxTurns = @dieRoller.maxTurns
     end
@@ -18,20 +20,21 @@ class GameLoopManager #get around creating any events
     def gameLoop
         gameFinished = false;
 
-        @currentTurn = 0
-        while !gameFinished && @currentTurn < @maxTurns
-            resolveTurn(@turnManager.currentPlayerBeingResolved)
-            @turnManager.incrementPlayersTurn
-            @currentTurn += 1
+        while !gameFinished && @turnTracker.currentTurn < @maxTurns
+        
+            resolveTurn(@turnTracker.playerIndexToResolve)
+            @turnTracker.incrementTurn #ideally this would happen from turn manager being subscibed to an event on this class. Then Player manager would automatically resolve things based on the die roll.
         end
     end
 
-    def resolveTurn(playerId)
+    def resolveTurn(playerIndexToResolve)
         getDieRoll()
+            puts "PLayerindexToResolve= #{playerIndexToResolve}"
+        @playerManager.resolvePlayerTurn(playerIndexToResolve, @dieRoll)
     end
 
     def getDieRoll()
-        @dieRoller.setNextDieRoll(@currentTurn)
+        @dieRoller.setNextDieRoll(@turnTracker.currentTurn)
         @dieRoll = @dieRoller.nextDieRoll
     end
 end

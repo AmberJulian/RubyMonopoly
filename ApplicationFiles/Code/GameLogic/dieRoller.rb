@@ -5,6 +5,7 @@ class DieRoller
     attr_reader :nextDieRoll, :maxTurns
 
 def initialize
+    puts "Initializing Die Roller..."
     rollFile = File.open "../../Data/rolls_1.json"
     @dieRollData = JSON.load rollFile
     @maxTurns = @dieRollData.count

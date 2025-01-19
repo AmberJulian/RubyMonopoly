@@ -18,7 +18,11 @@ class PlayerManager
         end
     end
 
-    def resolveTurn(playerArrayId)
+    def resolvePlayerTurn(playerIndexToResolve, spacesMoved)
+             puts "PLayerindexToResolveIn player manager= #{playerIndexToResolve}"
+        currentPlayer = @players[playerIndexToResolve]
+        #newPlayerLocation = 
+        puts "Player #{currentPlayer.name} moved #{spacesMoved} spaces from position #{currentPlayer.location} to  "
     end
 end
 

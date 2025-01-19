@@ -2,7 +2,7 @@
 require 'json'
 
 
-class PropertyTracker 
+class PropertyOwnershipTracker 
 #Example of how to get information out
 #data = '{"Name" : "Harsha" ,"Subject":{"1":"Physics","2":"Maths"}}'
 #json_string = JSON.parse(data)
@@ -21,7 +21,7 @@ class PropertyTracker
    data.each do |property|
     if "#{property["type"]}" == "property"
       propertyOwnershipHash = {:"#{property["name"]}" => -1}
-      puts unownedPropertyHash
+      puts propertyOwnershipHash
     end
    end
   
@@ -30,4 +30,4 @@ class PropertyTracker
 end
 
 # initialize object
-PropertyTracker.new
+PropertyOwnershipTracker.new

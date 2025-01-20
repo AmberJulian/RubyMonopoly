@@ -45,9 +45,9 @@ class PlayerAccessor
     def addPlayerMoney(playerIndex, moneyAmount)
         @players[playerIndex].money += moneyAmount
         if moneyAmount < 0
-            puts "Removing #{-moneyAmount} of player #{getPlayerName(playerIndex)}'s money. They now have #{@players[playerIndex].money}"
+            puts "Removing #{-moneyAmount} of player #{getPlayerName(playerIndex)}'s money. They now have $#{@players[playerIndex].money}"
         else
-            puts "Adding #{moneyAmount} to player #{getPlayerName(playerIndex)}'s money #{moneyAmount}. They now have #{@players[playerIndex].money}"
+            puts "Adding #{moneyAmount} to player #{getPlayerName(playerIndex)}'s money. They now have $#{@players[playerIndex].money}"
         end
         
     end

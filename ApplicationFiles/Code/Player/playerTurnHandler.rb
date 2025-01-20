@@ -15,7 +15,7 @@ class PlayerTurnHandler
         playerOriginalLocation  = player.location
         playerFinalLocation = @propertyAccessor.getPropertyPositionLandedOn(playerOriginalLocation, spacesMoved)
         playerAccessor.updatePlayerLocation(playerIndex, playerFinalLocation)
-        puts "Player #{player.name} moved #{spacesMoved} spaces from #{@propertyAccessor.getPropertyAtLocation(playerOriginalLocation)['name']} to #{@propertyAccessor.getPropertyAtLocation(playerFinalLocation)['name']}."
+        puts "Player #{player.name} moves #{spacesMoved} spaces from #{@propertyAccessor.getPropertyAtLocation(playerOriginalLocation)['name']} to #{@propertyAccessor.getPropertyAtLocation(playerFinalLocation)['name']}."
 
         if playerFinalLocation < playerOriginalLocation #assumes you can never roll higher than the number of spaces (currently 9)
             @playerAccessor.addPlayerMoney(playerIndex, 1)
@@ -27,8 +27,9 @@ class PlayerTurnHandler
         isPropertyOwned = @propertyAccessor.getPropertyIsOwned(playerFinalLocation)
         if isPropertyOwned
             ownerIndex = @propertyAccessor.getPropertyOwnerIndex(playerFinalLocation)
-            puts 
+            puts "Property is already owned by #{@playerAccessor.getPlayerName(ownerIndex)}, and so #{player.name} will need to pay rent."
             if @propertyAccessor.getPropertySetIsOwned(playerFinalLocation)
+                  puts "#{@playerAccessor.getPlayerName(ownerIndex)} owns the whole set and so rent is doubled."
                 @playerAccessor.addPlayerMoney(ownerIndex, propertyPrice * 2)
                 @playerAccessor.addPlayerMoney(playerIndex, -propertyPrice * 2)
             else
@@ -46,6 +47,7 @@ class PlayerTurnHandler
             end
         end
     end
+
 
 
     def isGameOver

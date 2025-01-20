@@ -16,9 +16,11 @@ class GameLoop #get around creating any events
     def gameLoop
         gameFinished = false;
         while !gameFinished && @turnTracker.currentTurn < @maxTurns
+            puts "Starting turn #{@turnTracker.currentTurn}"
             resolveTurn(@turnTracker.getCurrentPlayerIndex)
             @turnTracker.incrementTurn #ideally this would happen from turn manager being subscibed to an event on this class. Then Player manager would automatically resolve things based on the die roll.
             gameFinished = @playerTurnHandler.isGameOver #ideally happen with an event
+            puts #empty line
         end
     end
 

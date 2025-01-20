@@ -3,7 +3,8 @@ Notes from creating application:
 Assumptions Made About Project:
 * It says it's a command line app - I assume that means we need no visuals.
 * The price for rent for each property is the same as it's initial price (this is not how the original game works)
-* AI Usage - Since this hasn't been specified, I'll write a version with no AI (only google), and try improve it in a second version with AI improving my code after I've finished. Happy to chat about reasoning more - but I'm scared of giving the impression that I'm not with the times, OR give the impression that I over rely on it.  
+* AI Usage - Since this hasn't been specified, I'll write a version with no AI (only google), and try improve it in a second version with AI improving my code after I've finished. I don't want to give the impression I cannot get by without AI, but I also don't want to make it look like I'm unwilling to use all tools available. 
+* I cannot change the board data - Ideally I would work with IDs for the properties, not name strings. 
 
 
 Process: 

@@ -1,33 +1,28 @@
 #importing the JSON Module 
 require 'json'
 
-
+#One thing that I would change about the board.json class is that each property should have an int ID - I'd like to avoid working with name strings to avoid creating unneccessary garbage. 
 class PropertyOwnershipTracker 
-#Example of how to get information out
-#data = '{"Name" : "Harsha" ,"Subject":{"1":"Physics","2":"Maths"}}'
-#json_string = JSON.parse(data)
-#puts json_string["Name"]
-  UNOWNEDPROPERTYKEY = -1 #Constants begin with capital letters. The first example I saw had the declaration totally uppercase, so I've done that here. 
+  UNOWNEDPROPERTYKEY = -1  
   unownedPropertyHash = {}
 
-  #Ruby has a built in initialize method, for setting default values
-  def initialize
-   # puts "Hello World" # this is how to console.log
-  puts "Initializing Property Manager..."
-   file = File.open "../../Data/board.json"
-   data = JSON.load file
-   #puts data
+ 
+  def initialize(data)
+    puts "Initializing PropertyOwnershipTracker..."
    
-   data.each do |property|
-    if "#{property["type"]}" == "property"
-      propertyOwnershipHash = {:"#{property["name"]}" => -1}
-      puts propertyOwnershipHash
+    @propertyOwnershipHash ||= {} 
+    data.each do |property|
+      if "#{property["type"]}" == "property"
+        @propertyOwnershipHash[property["name"]] = -1 
+      end 
     end
-   end
-  
-  
-  end #End closes a block. I think it might be similar to return. 
-end
+  end
 
-# initialize object
-PropertyOwnershipTracker.new
+  def getPropertyIsOwned(propertyName)
+    return @propertyOwnershipHash[propertyName] != -1
+  end
+
+  def getPropertyOwnerIndex(propertyName)
+    return @propertyOwnershipHash[propertyName]
+  end
+end

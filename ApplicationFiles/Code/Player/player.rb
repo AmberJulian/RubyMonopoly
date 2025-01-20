@@ -1,5 +1,6 @@
 class Player
-    attr_reader :name, :id, :money, :location
+    attr_reader :name, :id
+    attr_accessor :money, :location
     def initialize(playerName, id)
         @location = 0
         @money = 16

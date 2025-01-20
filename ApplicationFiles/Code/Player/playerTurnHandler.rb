@@ -22,11 +22,28 @@ class PlayerTurnHandler
             puts "#{player.name} has passed go and collected $1"
         end
 
-        puts @propertyAccessor.getPropertyIsOwned(playerFinalLocation)
-        if @propertyAccessor.getPropertyIsOwned(playerFinalLocation)
-            ownerIndex = @propertyAccessor.getPropertyOwnerIndex(playerFinalLocation)
-        else #property is not owned, if it is not go, buy it.
+        propertyPrice = @propertyAccessor.getPropertyAtLocation(playerFinalLocation)["price"] #rent price is the same as property price
 
+        isPropertyOwned = @propertyAccessor.getPropertyIsOwned(playerFinalLocation)
+        if isPropertyOwned
+            ownerIndex = @propertyAccessor.getPropertyOwnerIndex(playerFinalLocation)
+            puts 
+            if @propertyAccessor.getPropertySetIsOwned(playerFinalLocation)
+                @playerAccessor.addPlayerMoney(ownerIndex, propertyPrice * 2)
+                @playerAccessor.addPlayerMoney(playerIndex, -propertyPrice * 2)
+            else
+                @playerAccessor.addPlayerMoney(ownerIndex, propertyPrice)
+                @playerAccessor.addPlayerMoney(playerIndex, -propertyPrice)
+            end
+        else #property is not owned
+            if @propertyAccessor.getPropertyCanBeOwned(playerFinalLocation)
+                @playerAccessor.addPlayerMoney(playerIndex, -propertyPrice)
+                puts "#{player.name} has bought #{@propertyAccessor.getPropertyAtLocation(playerFinalLocation)['name']}."
+                @propertyAccessor.setPropertyOwner(playerFinalLocation, playerIndex)
+                if (@propertyAccessor.getPropertySetIsOwned(playerFinalLocation))
+                    puts "#{player.name} now owns the #{@propertyAccessor.getPropertyColour(playerFinalLocation)} set."
+                end
+            end
         end
     end
 

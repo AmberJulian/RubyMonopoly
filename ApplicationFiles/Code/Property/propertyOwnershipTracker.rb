@@ -25,4 +25,8 @@ class PropertyOwnershipTracker
   def getPropertyOwnerIndex(propertyName)
     return @propertyOwnershipHash[propertyName]
   end
+
+  def setPropertyOwnerIndex(propertyName, playerIndex)
+    @propertyOwnershipHash[propertyName] = playerIndex
+  end
 end

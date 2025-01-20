@@ -22,10 +22,45 @@ class PropertyAccessor
     end
 
     def getPropertyIsOwned(location)
-        return @propertyOwnershipTracker.getPropertyIsOwned(@properties[location]["name"])
+        if @properties[location]["type"] != "property"
+            return false
+        else
+            return @propertyOwnershipTracker.getPropertyIsOwned(@properties[location]["name"])
+        end
     end
 
-    def getPropertyOwnerIndex(propertyName)
-        return @propertyOwnershipTracker.getPropertyOwnerIndex(propertyName)
-      end
+    def getPropertyCanBeOwned(location)
+        if @properties[location]["type"] == "property"
+            return true
+        else
+            return false
+        end
+    end
+
+    def getPropertySetIsOwned(location)
+        propertyColour = @properties[location]["colour"]
+        propertyOwnerIndex = getPropertyOwnerIndex(location)
+        isSetOwned = true
+
+        for i in 0..@properties.count-1
+            if "#{@properties[i]["colour"]}" == propertyColour
+                if (getPropertyOwnerIndex(i)) != propertyOwnerIndex
+                    isSetOwned = false
+                end
+            end 
+          end
+        return isSetOwned
+    end
+
+    def getPropertyOwnerIndex(location)
+        return @propertyOwnershipTracker.getPropertyOwnerIndex(@properties[location]["name"])
+    end
+
+    def setPropertyOwner(location, ownerIndex)
+        @propertyOwnershipTracker.setPropertyOwnerIndex(@properties[location]["name"], ownerIndex)
+    end
+
+    def getPropertyColour(location)
+        return @properties[location]["colour"]
+    end
 end

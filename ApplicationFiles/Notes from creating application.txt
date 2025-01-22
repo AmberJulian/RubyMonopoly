@@ -4,8 +4,7 @@ Assumptions Made About Project:
 * It says it's a command line app - I assume that means we need no visuals.
 * The price for rent for each property is the same as it's initial price (this is not how the original game works)
 * AI Usage - Since this hasn't been specified, I'll write a version with no AI (only google), and try improve it in a second version with AI improving my code after I've finished. I don't want to give the impression I cannot get by without AI, but I also don't want to make it look like I'm unwilling to use all tools available. 
-* I cannot change the board data - Ideally I would work with IDs for the properties, not name strings. 
-
+* I cannot change the board data - Ideally I would work with int IDs for the properties instead of name strings, because working with strings creates garbage (just like in C#). I'd never want to change company data without knowing why it's like that in the first place. In production I would start a conversation in a public programmer chat to understand better/highlight to others if it's an issue. For the purposes of this test, I'll assume the company had a good reason to not use int IDs.
 
 Process: 
 First I created a GIT library, and committed the files given. 
@@ -14,10 +13,27 @@ I quickly googled Ruby. I learned it's an object orientated programming language
 
 Normally I'd do estimating before starting any task. 
 
-I want some pseudocode to work with. It's a small task that I could do without much thought in C#, but I don't know Ruby. 
+I want some pseudocode to work with. I could write this without much thought in C#, but I don't know Ruby. 
 I estimate an hour to write the pseudo. Ten hours to write the actual code. If appropriate, I would flag a low estimation confidence to production (I have no idea how much trouble Ill have converting my C# thoughts to Ruby code). I could also flag at this point that I may be able to do it faster by using AI to figure out how to write each line of my pseudo in Ruby, or by not attempting unit tests, or not trying too hard to make it extensible into a full project. 
 
 I wrote pseudocode according to how I would code in C#. Took about an hour. 
+I took about ten hours total to write the rest, though this was across a few days. 
+
+How I would make this better: 
+* With a few extra folders (not files), we could split the code into assembly definitions
+* Unit tests
+* If I had run all output through a file devoted to logging, I could remove, or pick and choose logs for the production version
+* I didn't research how to create events in ruby, but putting events all through my code would allow us to output through events instead of all over the place, and it would also carry over to any other front end code/effects/visualisation built on top
+* I didn't run this code through chat GPT but I can guarantee it would improve the quality of the Ruby code (and may teach me some tricks that would allow me to lay this out a bit nicer)
+* I didn't have a nice way of outputting the winner - If I was doing outputting through events, I wouldn't have gameloop indirectly trying to access playerAccessor through turn tracker
+* Have a file opener class
+* Reduce usages of strings by giving locations IDs
+
+Final thoughts: 
+Overall, outside of my points above, I feel the architecture is laid out in such a way that it would be fine to build a fully featured monopoly game on top. 
+Whilst my ruby code written is very poor quality, I'm happy with my result because it was a first attempt at Ruby and I didn't use AI (which meant debugging issues and learning more). My language of choice is C#, which has a very different syntax. 
+
+
 
  
 

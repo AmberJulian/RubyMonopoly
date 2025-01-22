@@ -6,12 +6,16 @@ class DieRoller
 
 def initialize
     puts "Initializing Die Roller..."
-    rollFile = File.open "../../Data/rolls_1.json"
-    @dieRollData = JSON.load rollFile
-    @maxTurns = @dieRollData.count
 end
 
     def getNextDieRoll(turnNumber) #remove turn number parameter if we move away from autogenerating our rolls
         return @dieRollData[turnNumber]
+    end
+
+    def setDieRollFile(fileNumber)
+        puts "Setting Up Die Roller with file #{fileNumber}."
+        rollFile = File.open "../../Data/rolls_#{fileNumber}.json"
+        @dieRollData = JSON.load rollFile
+        @maxTurns = @dieRollData.count
     end
 end

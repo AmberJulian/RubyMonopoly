@@ -42,14 +42,33 @@ class PlayerAccessor
         return @players[playerIndex].name
     end
 
-    def addPlayerMoney(playerIndex, moneyAmount)
+    def changePlayerMoney(playerIndex, moneyAmount)
         @players[playerIndex].money += moneyAmount
         if moneyAmount < 0
-            puts "Removing #{-moneyAmount} of player #{getPlayerName(playerIndex)}'s money. They now have $#{@players[playerIndex].money}"
+            puts "Removing $#{-moneyAmount} from #{getPlayerName(playerIndex)}'s money. They now have $#{@players[playerIndex].money}."
         else
-            puts "Adding #{moneyAmount} to player #{getPlayerName(playerIndex)}'s money. They now have $#{@players[playerIndex].money}"
+            puts "Adding $#{moneyAmount} to #{getPlayerName(playerIndex)}'s money. They now have $#{@players[playerIndex].money}."
         end
-        
+    end
+
+    def getWinner
+        bestPlayer = 0
+        for i in 1..@playerCount-1
+            if (@players[i].money > @players[bestPlayer].money)
+                bestPlayer = i
+            end
+        end
+        return @players[bestPlayer]
+    end
+
+    def getLoser
+        losingPlayer = 0
+        for i in 1..@playerCount-1
+            if (@players[i].money < @players[losingPlayer].money)
+                losingPlayer = i
+            end
+        end
+        return @players[losingPlayer]
     end
 end
 
